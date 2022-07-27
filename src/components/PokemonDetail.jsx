@@ -114,9 +114,7 @@ const PokemonDetail = ({ filterPokemon, filterPoke }) => {
                   : "water"
               }`}
             >
-              <div className="chilWelcome">
-              {filterPoke.name}
-              </div>
+              <div className="chilWelcome">{filterPoke.name}</div>
             </h1>
           </div>
           <div
@@ -173,9 +171,10 @@ const PokemonDetail = ({ filterPokemon, filterPoke }) => {
             </div>
           </div>
         </div>
+
         <div className="containerPokemonInfo">
           <div className="PokemonInfo">
-            <>
+            <div className="startAndEx">
               <div class="progress-bar green stripes shine">
                 <div className="titleinfo">Hp:</div>
                 <div className="containerBar">
@@ -219,61 +218,9 @@ const PokemonDetail = ({ filterPokemon, filterPoke }) => {
                   </span>
                 </div>
               </div>
-            </>
-          </div>
-          <div
-            className={`infoEx   chilWelcome ${
-              type == "bug"
-                ? "bug"
-                : type == "dark"
-                ? "dark"
-                : type == "dragon"
-                ? "dragon"
-                : type == "electric"
-                ? "electric"
-                : type == "fairy"
-                ? "fairy"
-                : type == "fighting"
-                ? "fighting"
-                : type == "fire"
-                ? "fire"
-                : type == "flying"
-                ? "flying"
-                : type == "ghost"
-                ? "ghost"
-                : type == "grass"
-                ? "grass"
-                : type == "ground"
-                ? "ground"
-                : type == "ice"
-                ? "ice"
-                : type == "normal"
-                ? "normal"
-                : type == "poison"
-                ? "poison"
-                : type == "psychic"
-                ? "psychic"
-                : type == "rock"
-                ? "rock"
-                : type == "steel"
-                ? "steel"
-                : "water"
-            }`}
-          >
-            <div className="chilWelcome">
-              {" "}
-              <b>Types:</b> {filterPoke.types?.[0]?.type?.name}{" "}
-              {filterPoke.types?.[1]?.type?.name}
             </div>
-            <div className="chilWelcome">
-              <b>Abilities:</b>
-              {filterPoke.abilities?.map((element) => (
-                <>{element.ability.name} </>
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className= {` containerSkill chilWelcome ${
+            <div
+              className={`infoEx   chilWelcome ${
                 type == "bug"
                   ? "bug"
                   : type == "dark"
@@ -309,8 +256,63 @@ const PokemonDetail = ({ filterPokemon, filterPoke }) => {
                   : type == "steel"
                   ? "steel"
                   : "water"
-              }`}>
-                <h2 className=" chilWelcome">---------- Start Moves ----------</h2>
+              }`}
+            >
+              <div className="chilWelcome">
+                {" "}
+                <b>Types:</b> {filterPoke.types?.[0]?.type?.name}{" "}
+                {filterPoke.types?.[1]?.type?.name}
+              </div>
+              <div className="chilWelcome">
+                <b>Abilities:</b>
+                {filterPoke.abilities?.map((element) => (
+                  <>{element.ability.name} </>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          className={` containerSkill chilWelcome ${
+            type == "bug"
+              ? "bug"
+              : type == "dark"
+              ? "dark"
+              : type == "dragon"
+              ? "dragon"
+              : type == "electric"
+              ? "electric"
+              : type == "fairy"
+              ? "fairy"
+              : type == "fighting"
+              ? "fighting"
+              : type == "fire"
+              ? "fire"
+              : type == "flying"
+              ? "flying"
+              : type == "ghost"
+              ? "ghost"
+              : type == "grass"
+              ? "grass"
+              : type == "ground"
+              ? "ground"
+              : type == "ice"
+              ? "ice"
+              : type == "normal"
+              ? "normal"
+              : type == "poison"
+              ? "poison"
+              : type == "psychic"
+              ? "psychic"
+              : type == "rock"
+              ? "rock"
+              : type == "steel"
+              ? "steel"
+              : "water"
+          }`}
+        >
+          <h2 className=" chilWelcome"> Start Moves </h2>
           <div className="pokemonSkill">
             {filterPoke.moves?.map((element) => (
               <div className="skillName">{element.move.name}</div>
