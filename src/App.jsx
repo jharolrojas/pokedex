@@ -5,47 +5,35 @@ import Login from "./components/Login";
 import useGetData from "./customHooks/useGetData";
 import Home from "./components/Home";
 import PokemonDetail from "./components/PokemonDetail";
-
+import ProtectedRoutes from "./components/ProtectedRoutes";
 
 function App() {
   const { dataAll, filterPokemon, filterPoke, filterType, allPokemons } =
     useGetData();
- {/* <div className="ExitandGoback">
+  {
+    /* <div className="ExitandGoback">
         <i  style={{fontSize:"5em"}} class="fas fa-arrow-alt-left"></i>
         <i class="fad fa-arrow-circle-left"></i>
         <i class="far fa-arrow-circle-left"></i>
         <i class="fal fa-arrow-alt-left"></i>
         <i  style={{fontSize:"5em"}} class="fal fa-door-open"></i>
-        </div> */}  
+        </div> */
+  }
   return (
     <HashRouter>
-      <div className="App">
-         </div>
+      <div className="App"></div>
 
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route
-            path="/Home"
-            element={
-              <Home
-                dataAll={dataAll}
-                filterType={filterType}
-                allPokemons={allPokemons}
-              />
-            }
-          />
-          <Route
-            path="/Home/Pokemon/:search"
-            element={
-              <PokemonDetail
-                filterPokemon={filterPokemon}
-                filterPoke={filterPoke}
-              />
-            }
-          />
-          
-        </Routes>
-  
+      <Routes>
+        <Route path="/" element={<Login />} />
+
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/Home" element={ <Home dataAll={dataAll} filterType={filterType} allPokemons={allPokemons}/>}/>
+          <Route path="/Pokemon/:search" element={<PokemonDetail filterPokemon={filterPokemon} filterPoke={filterPoke}  /> }/>
+        </Route>
+        
+      </Routes>
+   
+
     </HashRouter>
   );
 }

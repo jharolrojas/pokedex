@@ -418,17 +418,17 @@ Css Card
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-.red span {
-  background-color: rgb(182, 9, 9);
+.red  {
+  color: rgb(182, 9, 9);
 }
-.green span {
-  background-color: rgb(12, 235, 12);
+.green  {
+  color: rgb(12, 235, 12);
 }
-.silver span {
-  background-color: rgb(94, 94, 94);
+.silver  {
+  color: rgb(94, 94, 94);
 }
-.yellow span {
-  background-color: rgb(211, 211, 0);
+.yellow  {
+  color: rgb(211, 211, 0);
 }
 
 /* pokemon detail */

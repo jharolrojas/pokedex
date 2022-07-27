@@ -16,7 +16,7 @@ const useGetData = () => {
   //for home list
   useEffect(() => {
     axios
-      .get("https://pokeapi.co/api/v2/pokemon/?limit=5")
+      .get("https://pokeapi.co/api/v2/pokemon/?limit=1154")
       .then((res) => setDataAll(res.data.results));
   }, []);
   //filtrar porpokemon sea name o id

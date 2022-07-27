@@ -13,7 +13,7 @@ const ListHome = ({ url }) => {
   const type = data.types?.[0]?.type?.name;
 
   const click = (id) =>{
-    navigate(`/Home/Pokemon/${id}`)
+    navigate(`/Pokemon/${id}`)
   }
 
   return (

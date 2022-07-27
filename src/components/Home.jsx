@@ -17,7 +17,7 @@ const Home = ({ dataAll, filterType, allPokemons }) => {
   const lastIndex = page * 5;
   const firstIndex = lastIndex - 5;
   const paginacion = dataAll.slice(firstIndex, lastIndex);
-  const lastPage = Math.ceil(dataAll.length / 5);
+  const lastPage = Math.ceil(dataAll.length / 20);
 
   const numbers = []; // [1, 2, 3, 4]
   for (let i = 1; i <= lastPage; i++) {
