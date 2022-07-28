@@ -1,24 +1,24 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import pikachu from "../assets/pika.png";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 const PokemonCard = ({ url }) => {
   const [data, setData] = useState({});
-  const navigate =  useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get(url).then((res) => setData(res.data));
   }, []);
   const type = data.types?.[0]?.type?.name;
 
-  const click = (id) =>{
-    navigate(`/Pokemon/${id}`)
-  }
+  const click = (id) => {
+    navigate(`/Pokemon/${id}`);
+  };
 
   return (
-    <div onClick={()=> click(data.id)} className="containerCardAll">
-      <div  className={`namePokemon chilWelcome ${
+    <div onClick={() => click(data.id)} className="containerCardAll">
+      <div
+        className={`namePokemon chilWelcome ${
           type == "bug"
             ? "bug"
             : type == "dark"
@@ -54,9 +54,10 @@ const PokemonCard = ({ url }) => {
             : type == "steel"
             ? "steel"
             : "water"
-        }`}>
-      <h2 className="chilWelcome" >{data.name}</h2>
-        </div>
+        }`}
+      >
+        <h2 className="chilWelcome">{data.name}</h2>
+      </div>
       <div
         className={`card ${
           type == "bug"

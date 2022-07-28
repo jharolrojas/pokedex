@@ -24,7 +24,7 @@ const Select = ({filterType , allPokemons}) => {
    
    }
 
-    // console.log(url,"url")
+ 
     return (
         <select  className='select' onChange={filterTypePokemon}>
             <option value='All' >All Pokemones</option>

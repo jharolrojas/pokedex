@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux/es/exports";
-import PokemonCard from "./PokemonCard";
+import { useDispatch, useSelector } from "react-redux/es/exports";
+import {  useNavigate } from "react-router-dom";
 import pokedex from "../assets/pokedexx.png";
 import pokebola from "../assets/pl.png";
-
 import Select from "./Select";
-import { useNavigate } from "react-router-dom";
+import PokemonCard from "./PokemonCard";
+import { SaveUserName } from "../store/slices/userName.slice";
 
 const Home = ({ dataAll, filterType, allPokemons }) => {
   const userName = useSelector((state) => state.userNameslice);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [page, setPage] = useState(1);
   const lastIndex = page * 20;
@@ -21,12 +22,22 @@ const Home = ({ dataAll, filterType, allPokemons }) => {
   const numbers = []; // [1, 2, 3, 4]
   for (let i = page - 3; i <= page + 3; i++) {
     if (i > 0 && i <= lastPage) {
-      numbers.push(i)
+      numbers.push(i);
     }
-}
+  }
+  const exit = () => {
+    dispatch(SaveUserName(""));
+  };
 
   return (
     <div>
+      <div className="ExitandGobackHome">
+        <i
+          style={{ fontSize: "2em" }}
+          onClick={exit}
+          class="fas fa-sign-out-alt"
+        ></i>
+      </div>
       <div className="header">
         <div className="containerTitlePodekex">
           <figure>
@@ -65,7 +76,7 @@ const Home = ({ dataAll, filterType, allPokemons }) => {
           <h1>Welcome to Pokedex</h1>
           <p>
             {" "}
-             <b>{userName}</b> are you Ready?
+            <b>{userName}</b> are you Ready?
           </p>
         </div>
         <Select filterType={filterType} allPokemons={allPokemons} />
@@ -85,7 +96,7 @@ const Home = ({ dataAll, filterType, allPokemons }) => {
           onClick={() => setPage(page - 1)}
           disabled={page === 1}
         >
-          Prev page
+          Prev
         </button>
         {numbers.map((number) => (
           <button
@@ -100,7 +111,7 @@ const Home = ({ dataAll, filterType, allPokemons }) => {
           onClick={() => setPage(page + 1)}
           disabled={page === lastPage}
         >
-          Next Page
+          Next
         </button>
       </div>
     </div>

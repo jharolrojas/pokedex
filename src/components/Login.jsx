@@ -5,8 +5,7 @@ import SliderPokemon from "./SliderPokemon";
 import { SaveUserName } from "../store/slices/userName.slice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import pikachu from '../assets/pika.png'
-
+import pikachu from "../assets/pika.png";
 
 const Login = () => {
   const [userName, setUserName] = useState("");
@@ -21,7 +20,6 @@ const Login = () => {
 
   return (
     <div>
-     
       <div className="containerTitlePodekex">
         <figure>
           <img className="pokedex" src={pokedex} alt="ash" />
@@ -46,12 +44,11 @@ const Login = () => {
         </form>
       </div>
       <div className="sliderShow">
-      <SliderPokemon />
+        <SliderPokemon />
       </div>
       <div className="pikachu">
-    <img src={pikachu} alt="" />
+        <img src={pikachu} alt="" />
       </div>
-       
     </div>
   );
 };

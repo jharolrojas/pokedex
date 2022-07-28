@@ -1,35 +1,38 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { SaveUserName } from "../store/slices/userName.slice";
 
 const PokemonDetail = ({ filterPokemon, filterPoke }) => {
   const { search } = useParams();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   useEffect(() => {
     filterPokemon(search);
   }, [search]);
-  console.log(filterPoke);
-  //
-  //
-  //   <div className="containerInfo">
-  //   <p className="green">
-  //     <b>Hp:</b> {filterPoke.stats?.[0].base_stat}
-  //   </p>
-  //   <p className="red">
-  //     <b>Attack:</b> {filterPoke.stats?.[1].base_stat}
-  //   </p>
-  //   <p className="silver">
-  //     <b>Defense:</b> {filterPoke.stats?.[2].base_stat}
-  //   </p>
-  //   <p className="yellow">
-  //     <b>Speed:</b> {filterPoke.stats?.[3].base_stat}
-  //   </p>
-  //   <p>
-  //     <b>Types:</b> {filterPoke.types?.[0]?.type?.name}{" "}
-  //     {filterPoke.types?.[1]?.type?.name}
-  //   </p>
-  // </div>
+
+  const exit = (isValue) => {
+    if (isValue) {
+      navigate(-1);
+    } else {
+      dispatch(SaveUserName(""));
+    }
+  };
   const type = filterPoke.types?.[0]?.type?.name;
   return (
     <div className="backgroundDetail">
+      <div className="ExitandGoback">
+        <i
+          onClick={() => exit(true)}
+          style={{ fontSize: "2em" }}
+          class="fas fa-arrow-circle-left"
+        ></i>
+        <i
+          onClick={() => exit(false)}
+          style={{ fontSize: "2em" }}
+          class="fas fa-sign-out-alt"
+        ></i>
+      </div>
       <div className="c-Container">
         <div className="pokemonDetail">
           <div className="containerImg">

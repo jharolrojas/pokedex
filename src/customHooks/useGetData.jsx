@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-
 const useGetData = () => {
   const [data, setData] = useState([]);
   const [dataAll, setDataAll] = useState([]);
@@ -33,13 +32,12 @@ const useGetData = () => {
   };
 
   // para traer todos los pokemones desde el select
-  const allPokemons = () =>{
+  const allPokemons = () => {
     axios
       .get("https://pokeapi.co/api/v2/pokemon")
       .then((res) => setDataAll(res.data.results));
-      console.log("all pokemon")
-  }
-  
+  };
+
   return { data, dataAll, filterPokemon, filterPoke, filterType, allPokemons };
 };
 
