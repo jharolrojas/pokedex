@@ -29,7 +29,7 @@ const Select = ({filterType , allPokemons}) => {
         <select  className='select' onChange={filterTypePokemon}>
             <option value='All' >All Pokemones</option>
             {types.map(type =>(
-                <option value={type.url}>{type.name}</option>
+                <option value={type.url} key={type.url}>{type.name}</option>
             ))}
             
         </select>

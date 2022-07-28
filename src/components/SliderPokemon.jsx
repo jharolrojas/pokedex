@@ -22,8 +22,8 @@ const SliderPokemon = () => {
       <div className="containerSlick">
         <Slider {...settings}>
           {data?.map((poke) => (
-            <div>
-              <PokeInfor url={poke.url} key={poke.url} />
+            <div key={poke.url} >
+              <PokeInfor url={poke.url} />
             </div>
           ))}
         </Slider>

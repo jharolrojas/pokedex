@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux/es/exports";
-import ListHome from "./ListHome";
+import PokemonCard from "./PokemonCard";
 import pokedex from "../assets/pokedexx.png";
 import pokebola from "../assets/pl.png";
 
@@ -11,40 +11,42 @@ const Home = ({ dataAll, filterType, allPokemons }) => {
   const userName = useSelector((state) => state.userNameslice);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
-  
 
   const [page, setPage] = useState(1);
-  const lastIndex = page * 5;
-  const firstIndex = lastIndex - 5;
+  const lastIndex = page * 20;
+  const firstIndex = lastIndex - 20;
   const paginacion = dataAll.slice(firstIndex, lastIndex);
   const lastPage = Math.ceil(dataAll.length / 20);
 
   const numbers = []; // [1, 2, 3, 4]
-  for (let i = 1; i <= lastPage; i++) {
-    numbers.push(i);
-  }
+  for (let i = page - 3; i <= page + 3; i++) {
+    if (i > 0 && i <= lastPage) {
+      numbers.push(i)
+    }
+}
 
   return (
-    <div >
+    <div>
       <div className="header">
-      <div className="containerTitlePodekex">
-        <figure>
-          <img className="pokedex" src={pokedex} alt="ash" />
-          <div className="pokebola App-logo">
-            <img src={pokebola} alt="pokebola" />
-          </div>
-        </figure>
-      </div>
+        <div className="containerTitlePodekex">
+          <figure>
+            <img className="pokedex" src={pokedex} alt="ash" />
+            <div className="pokebola App-logo">
+              <img src={pokebola} alt="pokebola" />
+            </div>
+          </figure>
+        </div>
       </div>
       <div className="search">
-        <form onSubmit={() => navigate(`/Home/Pokemon/${search}`)}>
-          <label>busca tu pokemon</label>
+        <form onSubmit={() => navigate(`/Pokemon/${search}`)}>
+          <label>Search</label>
           <div className="inputName">
-            <input list="pokemons"
+            <input
+              list="pokemons"
               type={"text"}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Enter your name to access the pokedex"
+              placeholder=" here you can find your favorite pokemon"
               className="input"
             />
             <button className="button">
@@ -52,7 +54,7 @@ const Home = ({ dataAll, filterType, allPokemons }) => {
             </button>
           </div>
           <datalist id="pokemons">
-            {dataAll?.map(element =>(
+            {dataAll?.map((element) => (
               <option>{element.name}</option>
             ))}
           </datalist>
@@ -61,28 +63,43 @@ const Home = ({ dataAll, filterType, allPokemons }) => {
       <div className="welcome">
         <div className="chilWelcome">
           <h1>Welcome to Pokedex</h1>
-          <p> In hour good <b>{userName}</b> , Ready?</p>
-          
+          <p>
+            {" "}
+             <b>{userName}</b> are you Ready?
+          </p>
         </div>
-        <Select filterType={filterType} allPokemons={allPokemons}/>
+        <Select filterType={filterType} allPokemons={allPokemons} />
       </div>
 
       <div className="containerListPokemon">
         {paginacion?.map((pokemon) => (
-          <ListHome
+          <PokemonCard
             url={pokemon.url ? pokemon.url : pokemon.pokemon.url}
             key={pokemon.url ? pokemon.url : pokemon.pokemon.url}
           />
         ))}
       </div>
       <div className="pagination">
-        <button  className="burronPagination" onClick={() => setPage(page - 1)} disabled={page === 1}>
+        <button
+          className="burronPagination"
+          onClick={() => setPage(page - 1)}
+          disabled={page === 1}
+        >
           Prev page
-        </button >
+        </button>
         {numbers.map((number) => (
-          <button className="buttonNumbersPagination" onClick={() => setPage(number)}>{number}</button>
+          <button
+            className="buttonNumbersPagination"
+            onClick={() => setPage(number)}
+          >
+            {number}
+          </button>
         ))}
-        <button className="burronPagination" onClick={() => setPage(page + 1)} disabled={page === lastPage}>
+        <button
+          className="burronPagination"
+          onClick={() => setPage(page + 1)}
+          disabled={page === lastPage}
+        >
           Next Page
         </button>
       </div>
@@ -91,4 +108,3 @@ const Home = ({ dataAll, filterType, allPokemons }) => {
 };
 
 export default Home;
-

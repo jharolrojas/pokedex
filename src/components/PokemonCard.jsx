@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import pikachu from "../assets/pika.png";
 import {useNavigate} from 'react-router-dom'
 
-const ListHome = ({ url }) => {
+const PokemonCard = ({ url }) => {
   const [data, setData] = useState({});
   const navigate =  useNavigate();
 
@@ -121,4 +121,4 @@ const ListHome = ({ url }) => {
   );
 };
 
-export default ListHome;
+export default PokemonCard;
