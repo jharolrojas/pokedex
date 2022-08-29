@@ -471,6 +471,7 @@ PokemonInfo
     flex-direction: column;
     height: auto;
   }
+
   .containerBar {
     margin: 0;
   }
@@ -506,6 +507,9 @@ PokemonInfo
   }
   .sliderShow {
     display: none;
+  }
+  .card {
+    margin: 20px 0;
   }
 }
 
