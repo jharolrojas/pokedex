@@ -19,6 +19,44 @@ const PokemonDetail = ({ filterPokemon, filterPoke }) => {
     }
   };
   const type = filterPoke.types?.[0]?.type?.name;
+
+  const typePokemonBackground = type == "bug"
+      ? "bug"
+      : type == "dark"
+      ? "dark"
+      : type == "dragon"
+      ? "dragon"
+      : type == "electric"
+      ? "electric"
+      : type == "fairy"
+      ? "fairy"
+      : type == "fighting"
+      ? "fighting"
+      : type == "fire"
+      ? "fire"
+      : type == "flying"
+      ? "flying"
+      : type == "ghost"
+      ? "ghost"
+      : type == "grass"
+      ? "grass"
+      : type == "ground"
+      ? "ground"
+      : type == "ice"
+      ? "ice"
+      : type == "normal"
+      ? "normal"
+      : type == "poison"
+      ? "poison"
+      : type == "psychic"
+      ? "psychic"
+      : type == "rock"
+      ? "rock"
+      : type == "steel"
+      ? "steel"
+      : "water";
+  
+
   return (
     <div className="backgroundDetail">
       <div className="ExitandGoback">
@@ -37,127 +75,19 @@ const PokemonDetail = ({ filterPokemon, filterPoke }) => {
         <div className="pokemonDetail">
           <div className="containerImg">
             <img
-              className={`chilWelcome ${
-                type == "bug"
-                  ? "bug"
-                  : type == "dark"
-                  ? "dark"
-                  : type == "dragon"
-                  ? "dragon"
-                  : type == "electric"
-                  ? "electric"
-                  : type == "fairy"
-                  ? "fairy"
-                  : type == "fighting"
-                  ? "fighting"
-                  : type == "fire"
-                  ? "fire"
-                  : type == "flying"
-                  ? "flying"
-                  : type == "ghost"
-                  ? "ghost"
-                  : type == "grass"
-                  ? "grass"
-                  : type == "ground"
-                  ? "ground"
-                  : type == "ice"
-                  ? "ice"
-                  : type == "normal"
-                  ? "normal"
-                  : type == "poison"
-                  ? "poison"
-                  : type == "psychic"
-                  ? "psychic"
-                  : type == "rock"
-                  ? "rock"
-                  : type == "steel"
-                  ? "steel"
-                  : "water"
-              }`}
+              className= {`chilWelcome ${typePokemonBackground}` }
               src={filterPoke.sprites?.other.home.front_default}
               alt="pokemon"
             />
 
             <h1
-              className={`chilWelcome  ${
-                type == "bug"
-                  ? "bug"
-                  : type == "dark"
-                  ? "dark"
-                  : type == "dragon"
-                  ? "dragon"
-                  : type == "electric"
-                  ? "electric"
-                  : type == "fairy"
-                  ? "fairy"
-                  : type == "fighting"
-                  ? "fighting"
-                  : type == "fire"
-                  ? "fire"
-                  : type == "flying"
-                  ? "flying"
-                  : type == "ghost"
-                  ? "ghost"
-                  : type == "grass"
-                  ? "grass"
-                  : type == "ground"
-                  ? "ground"
-                  : type == "ice"
-                  ? "ice"
-                  : type == "normal"
-                  ? "normal"
-                  : type == "poison"
-                  ? "poison"
-                  : type == "psychic"
-                  ? "psychic"
-                  : type == "rock"
-                  ? "rock"
-                  : type == "steel"
-                  ? "steel"
-                  : "water"
-              }`}
+              className={`chilWelcome   ${typePokemonBackground}`}
             >
               <div className="chilWelcome">{filterPoke.name}</div>
             </h1>
           </div>
           <div
-            className={` infoPrimary  chilWelcome ${
-              type == "bug"
-                ? "bug"
-                : type == "dark"
-                ? "dark"
-                : type == "dragon"
-                ? "dragon"
-                : type == "electric"
-                ? "electric"
-                : type == "fairy"
-                ? "fairy"
-                : type == "fighting"
-                ? "fighting"
-                : type == "fire"
-                ? "fire"
-                : type == "flying"
-                ? "flying"
-                : type == "ghost"
-                ? "ghost"
-                : type == "grass"
-                ? "grass"
-                : type == "ground"
-                ? "ground"
-                : type == "ice"
-                ? "ice"
-                : type == "normal"
-                ? "normal"
-                : type == "poison"
-                ? "poison"
-                : type == "psychic"
-                ? "psychic"
-                : type == "rock"
-                ? "rock"
-                : type == "steel"
-                ? "steel"
-                : "water"
-            }`}
+            className={` infoPrimary  chilWelcome  ${typePokemonBackground}`}
           >
             <div className="infoPrimaryChil">
               <b>Weight:</b>
@@ -184,7 +114,7 @@ const PokemonDetail = ({ filterPokemon, filterPoke }) => {
                   <span
                     style={{ width: `${filterPoke.stats?.[0].base_stat}%` }}
                   >
-                    {filterPoke.stats?.[0].base_stat}/150
+                    <b>{filterPoke.stats?.[0].base_stat}/150</b>
                   </span>
                 </div>
               </div>
@@ -195,7 +125,7 @@ const PokemonDetail = ({ filterPokemon, filterPoke }) => {
                   <span
                     style={{ width: `${filterPoke.stats?.[1].base_stat}%` }}
                   >
-                    {filterPoke.stats?.[1].base_stat}/150
+                    <b>{filterPoke.stats?.[1].base_stat}/150</b>
                   </span>
                 </div>
               </div>
@@ -206,7 +136,7 @@ const PokemonDetail = ({ filterPokemon, filterPoke }) => {
                   <span
                     style={{ width: `${filterPoke.stats?.[2].base_stat}%` }}
                   >
-                    {filterPoke.stats?.[2].base_stat}/150
+                   <b> {filterPoke.stats?.[2].base_stat}/150</b>
                   </span>
                 </div>
               </div>
@@ -217,49 +147,13 @@ const PokemonDetail = ({ filterPokemon, filterPoke }) => {
                   <span
                     style={{ width: `${filterPoke.stats?.[3].base_stat}%` }}
                   >
-                    {filterPoke.stats?.[3].base_stat}/150
+                   <b>{filterPoke.stats?.[3].base_stat}/150</b> 
                   </span>
                 </div>
               </div>
             </div>
             <div
-              className={`infoEx   chilWelcome ${
-                type == "bug"
-                  ? "bug"
-                  : type == "dark"
-                  ? "dark"
-                  : type == "dragon"
-                  ? "dragon"
-                  : type == "electric"
-                  ? "electric"
-                  : type == "fairy"
-                  ? "fairy"
-                  : type == "fighting"
-                  ? "fighting"
-                  : type == "fire"
-                  ? "fire"
-                  : type == "flying"
-                  ? "flying"
-                  : type == "ghost"
-                  ? "ghost"
-                  : type == "grass"
-                  ? "grass"
-                  : type == "ground"
-                  ? "ground"
-                  : type == "ice"
-                  ? "ice"
-                  : type == "normal"
-                  ? "normal"
-                  : type == "poison"
-                  ? "poison"
-                  : type == "psychic"
-                  ? "psychic"
-                  : type == "rock"
-                  ? "rock"
-                  : type == "steel"
-                  ? "steel"
-                  : "water"
-              }`}
+              className={`infoEx   chilWelcome  ${typePokemonBackground}`}
             >
               <div className="chilWelcome">
                 {" "}
@@ -277,43 +171,7 @@ const PokemonDetail = ({ filterPokemon, filterPoke }) => {
         </div>
 
         <div
-          className={` containerSkill chilWelcome ${
-            type == "bug"
-              ? "bug"
-              : type == "dark"
-              ? "dark"
-              : type == "dragon"
-              ? "dragon"
-              : type == "electric"
-              ? "electric"
-              : type == "fairy"
-              ? "fairy"
-              : type == "fighting"
-              ? "fighting"
-              : type == "fire"
-              ? "fire"
-              : type == "flying"
-              ? "flying"
-              : type == "ghost"
-              ? "ghost"
-              : type == "grass"
-              ? "grass"
-              : type == "ground"
-              ? "ground"
-              : type == "ice"
-              ? "ice"
-              : type == "normal"
-              ? "normal"
-              : type == "poison"
-              ? "poison"
-              : type == "psychic"
-              ? "psychic"
-              : type == "rock"
-              ? "rock"
-              : type == "steel"
-              ? "steel"
-              : "water"
-          }`}
+          className={` containerSkill chilWelcome  ${typePokemonBackground}`}
         >
           <h2 className=" chilWelcome"> Start Moves </h2>
           <div className="pokemonSkill">

@@ -35,7 +35,7 @@ const Home = ({ dataAll, filterType, allPokemons }) => {
         <i
           style={{ fontSize: "2em" }}
           onClick={exit}
-          class="fas fa-sign-out-alt"
+          className="fas fa-sign-out-alt"
         ></i>
       </div>
       <div className="header">
@@ -66,7 +66,7 @@ const Home = ({ dataAll, filterType, allPokemons }) => {
           </div>
           <datalist id="pokemons">
             {dataAll?.map((element) => (
-              <option>{element.name}</option>
+              <option key={element.name}>{element.name}</option>
             ))}
           </datalist>
         </form>
@@ -99,7 +99,7 @@ const Home = ({ dataAll, filterType, allPokemons }) => {
           Prev
         </button>
         {numbers.map((number) => (
-          <button
+          <button key={number}
             className="buttonNumbersPagination"
             onClick={() => setPage(number)}
           >

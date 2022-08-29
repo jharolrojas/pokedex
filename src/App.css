@@ -459,6 +459,7 @@ PokemonInfo
 @media (max-width: 420px) {
   .card .containerInfo {
     padding: 30px;
+    justify-content: center;
   }
   .card:hover img {
     left: 50%;
@@ -468,6 +469,7 @@ PokemonInfo
 @media (max-width: 700px) {
   .progress-bar {
     flex-direction: column;
+    height: auto;
   }
   .containerBar {
     margin: 0;
